@@ -1,0 +1,1 @@
+fetch("https://economy.roblox.com/v2/user-products/PRODUCT_ID_HERE/purchase",{body:JSON.stringify({"expectedCurrency": 1,"expectedPrice": 1,"expectedSellerId": 1}),method:"POST",credentials:"include",headers:{"Content-Type":"application/json","x-csrf-token":Roblox.XsrfToken.getToken()}})
