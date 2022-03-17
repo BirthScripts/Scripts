@@ -1,0 +1,167 @@
+local lp = game:FindService("Players").LocalPlayer
+
+local function gplr(String)
+	local Found = {}
+	local strl = String:lower()
+	if strl == "all" then
+		for i,v in pairs(game:FindService("Players"):GetPlayers()) do
+			table.insert(Found,v)
+		end
+	elseif strl == "others" then
+		for i,v in pairs(game:FindService("Players"):GetPlayers()) do
+			if v.Name ~= lp.Name then
+				table.insert(Found,v)
+			end
+		end 
+	elseif strl == "me" then
+		for i,v in pairs(game:FindService("Players"):GetPlayers()) do
+			if v.Name == lp.Name then
+				table.insert(Found,v)
+			end
+		end 
+	else
+		for i,v in pairs(game:FindService("Players"):GetPlayers()) do
+			if v.Name:lower():sub(1, #String) == String:lower() then
+				table.insert(Found,v)
+			end
+		end 
+	end
+	return Found 
+end
+
+local function notif(str,dur)
+	game:FindService("StarterGui"):SetCore("SendNotification", {
+		Title = "",
+		Text = str,
+		Icon = "rbxassetid://7612668541",
+		Duration = dur or 3
+	})
+end
+
+--//uw
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local troll = Instance.new("ImageLabel")
+local fling = Instance.new("TextLabel")
+local Yeet = Instance.new("TextButton")
+local Name = Instance.new("TextBox")
+
+--Properties:
+
+ScreenGui.Name = "ScreenGui"
+ScreenGui.Parent = game:GetService("CoreGui")
+ScreenGui.ResetOnSpawn = false
+
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(124, 124, 124)
+Frame.BorderSizePixel = 10
+Frame.Position = UDim2.new(0.248587579, 0, 0.257879674, 0)
+Frame.Size = UDim2.new(0, 511, 0, 288)
+
+troll.Name = "troll"
+troll.Parent = Frame
+troll.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+troll.Position = UDim2.new(0, 0, 0.135416672, 0)
+troll.Size = UDim2.new(0, 511, 0, 249)
+troll.Image = "rbxassetid://2005276185"
+
+fling.Name = "fling"
+fling.Parent = troll
+fling.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
+fling.BorderSizePixel = 0
+fling.Position = UDim2.new(0, 0, -0.156626508, 0)
+fling.Size = UDim2.new(0, 511, 0, 42)
+fling.Font = Enum.Font.Gotham
+fling.Text = "Fling Kids"
+fling.TextColor3 = Color3.fromRGB(255, 255, 255)
+fling.TextSize = 50.000
+
+Yeet.Name = "Yeet"
+Yeet.Parent = Frame
+Yeet.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Yeet.BorderSizePixel = 0
+Yeet.Position = UDim2.new(0.0978473574, 0, 0.715277791, 0)
+Yeet.Size = UDim2.new(0, 431, 0, 50)
+Yeet.Font = Enum.Font.GothamBold
+Yeet.Text = "Yeet Em'"
+Yeet.TextColor3 = Color3.fromRGB(255, 255, 255)
+Yeet.TextSize = 50.000
+Yeet.MouseButton1Click:Connect(function()
+	local Target = gplr(Name.Text)
+	if Target[1] then
+		Target = Target[1]
+
+		local Thrust = Instance.new('BodyThrust', lp.Character.HumanoidRootPart)
+		Thrust.Force = Vector3.new(9999,9999,9999)
+		Thrust.Name = "YeetForce"
+		repeat
+			lp.Character.HumanoidRootPart.CFrame = Target.Character.HumanoidRootPart.CFrame
+			Thrust.Location = Target.Character.HumanoidRootPart.Position
+			game:FindService("RunService").Heartbeat:wait()
+		until not Target.Character:FindFirstChild("Head")
+	else
+		notif("Invalid player")
+	end
+end)
+
+Name.Name = "Name"
+Name.Parent = Frame
+Name.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Name.BorderSizePixel = 0
+Name.Position = UDim2.new(0.160469681, 0, 0.378472239, 0)
+Name.Size = UDim2.new(0, 369, 0, 50)
+Name.Font = Enum.Font.GothamBold
+Name.Text = "Name of Vicitim"
+Name.TextColor3 = Color3.fromRGB(255, 255, 255)
+Name.TextSize = 28.000
+
+-- Scripts:
+
+local function VRKDI_fake_script() -- Frame.DraggableGUI 
+	local script = Instance.new('LocalScript', Frame)
+
+	local UserInputService = game:GetService("UserInputService")
+	
+	local gui = script.Parent
+	
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+	
+	local function update(input)
+		local delta = input.Position - dragStart
+		gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	end
+	
+	gui.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = gui.Position
+			
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+	
+	gui.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+	
+	UserInputService.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			if gui.Visible then
+				update(input)
+			end
+		end
+	end)
+end
+coroutine.wrap(VRKDI_fake_script)()
