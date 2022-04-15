@@ -79,11 +79,6 @@ if game.PlaceId == 7800644383 then
 		}
 		)
 	end)
-	
-
-	game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(args))
-	task.wait(2)
-
 
 	MainSection:NewButton("Give 999999 wanted", "999999 wanted", function()
 
