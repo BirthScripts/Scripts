@@ -12,7 +12,7 @@ local function GetURL(scripturl)
 		end
 		return readfile("verp/"..scripturl)
 	else
-		local res = game:HttpGet("https://raw.githubusercontent.com/BirthScripts/birthdayhub/Scripts/"..scripturl, true)
+		local res = game:HttpGet("https://raw.githubusercontent.com/BirthScripts/Scripts/main/birthdayhub/"..scripturl, true)
 		assert(res ~= "404: Not Found", "File not found")
 		return res
 	end
