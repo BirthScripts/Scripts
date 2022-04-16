@@ -414,6 +414,10 @@ if game.PlaceId == 7800644383 then
 	SettingsSection:NewTextBox("Username", "TARGETS USERNAME", function(value)
 		_G.Aiden = value
 	end)
+	
+	SettingsSection:NewKeybind("Close/Open UI (K)", "very good very nice", Enum.KeyCode.K, function()
+		Library:ToggleUI()
+end)
 
 	-- Credits
 
