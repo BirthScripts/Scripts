@@ -420,23 +420,23 @@ if game.PlaceId == 7800644383 then
 	local Credits = Window:NewTab("Credits")
 	local CreditsSection = Credits:NewSection("Credits")
 
-	CreditsSection:NewButton("Birthday", "Scripting Developer, Owner of Birth Hub", function()
-		print("BIRTHDAY")
+	CreditsSection:NewButton("Birthday#1835", "Scripting Developer, Owner of Birth Hub", function()
+		print("Birthday REAL")
 	end)
 
 	CreditsSection:NewButton("DaniXRTEAM", "Roblox Backdoor Scripter", function()
 		print("Dani")
 	end)
 
-	CreditsSection:NewButton("FunTrime", "God Mode, Reset cash and Cash Scripter", function()
-		print("FunTrime")
+	CreditsSection:NewButton("Curry#7032", "God Mode, Reset cash and Cash Scripter", function()
+		print("Curry#7032")
 	end)
 
 	CreditsSection:NewButton("Nigga4K9", "Inf Bullet and Crash server Scripter", function()
 		print("nigga balls")
 	end)
 
-	CreditsSection:NewButton("MRZOR", "i hate him", function()
+	CreditsSection:NewButton("MRZOR#2173", "i hate him", function()
 		print("mrzor is ugly (real)")
 	end)
 end
