@@ -1,10 +1,10 @@
 if game.PlaceId == 7800644383 then
 	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-	local Window = Library.CreateLib("Birthday Hood (FIXED)","Sentinel")
+	local Window = Library.CreateLib("Birthday Hood","Sentinel")
 
 	-- MAIN
-	local Main = Window:NewTab("Main")
-	local MainSection = Main:NewSection("Main")
+	local Cash = Window:NewTab("Cash")
+	local CashSection = Cash:NewSection("Cash")
 
 	local Workspace = game:GetService("Workspace")
 	local Players = game.Players.LocalPlayer
@@ -33,7 +33,7 @@ if game.PlaceId == 7800644383 then
 	game.ReplicatedStorage:FindFirstChild(".gg/untitledhood"):FireServer(
 	"Reload",
 	{
-		Name = "[Revolver]", --// reminder: [Double-Barrel SG] or [Revolver] works for any gun but i put it here so i can just copy and paste whenever i want to
+		Name = "[Revolver]",
 		Parent = Game.Players.LocalPlayer.Backpack,
 		ClassName = "Tool",
 		Ammo = {Value = math.huge*9e9},
@@ -49,22 +49,24 @@ if game.PlaceId == 7800644383 then
 
 	_G.Aiden = Players --CHANGE NAME HERE
 
-	_G.Amount = 999999999999 --999999999999
+	_G.Amount = 8999999999999999999
 
-	_G.Amount2 = 7777777777
+	_G.Amount2 = 8999999999999999999
 	---
 
-	_G.Reset = 1 
+	_G.Reset = 1
+
+	_G.Reset2 = -8999999999999999999
 	-- Main
 
 
-	MainSection:NewButton("Discord", "999999 Cash", function()
+	CashSection:NewButton("Discord", "Official Discord server!", function()
 		setclipboard('discord.gg/FkCJkuXzFy')
 	end)
 
 
 
-	MainSection:NewButton("Give 999999 Cash", "999999 Cash", function()
+	CashSection:NewButton("Give 999999 Cash", "999999 Cash", function()
 
 		game.ReplicatedStorage:FindFirstChild(".gg/untitledhood"):FireServer(
 		"Reload",
@@ -80,7 +82,33 @@ if game.PlaceId == 7800644383 then
 		)
 	end)
 
-	MainSection:NewButton("Give 999999 wanted", "999999 wanted", function()
+
+	CashSection:NewButton("Reset Cash", "", function()
+
+		game.ReplicatedStorage:FindFirstChild(".gg/untitledhood"):FireServer(
+		"Reload",
+		{
+			Name = "[Revolver]",
+			Parent = Game.Players.LocalPlayer.Backpack,
+			ClassName = "Tool",
+			Ammo = game:GetService("Players")[_G.Aiden].DataFolder.Currency,
+			MaxAmmo = {Value = _G.Reset2},
+			GunScript = game:GetService("Players").LocalPlayer.Backpack["[Revolver]"].GunScript,
+			Handle = game:GetService("Players").LocalPlayer.Backpack["[Revolver]"].Handle
+		}
+		) 
+	end)
+
+	CashSection:NewButton("Reset Cash Everyones Cash", "BROKEN!!!", function()
+		print("BROKEN!!!")
+	end)
+	-- Armor And Wanted
+
+	local ArmorAndWanted = Window:NewTab("Armor&Wanted")
+	local ArmorAndWantedSection = ArmorAndWanted:NewSection("Armor&Wanted")
+
+
+	ArmorAndWantedSection:NewButton("Give 999999 wanted", "999999 wanted", function()
 
 		game.ReplicatedStorage:FindFirstChild(".gg/untitledhood"):FireServer(
 		"Reload",
@@ -96,8 +124,7 @@ if game.PlaceId == 7800644383 then
 		) 
 	end)
 
-
-	MainSection:NewButton("Reset Cash", "", function()
+	ArmorAndWantedSection:NewButton("Reset Wanted", "", function()
 
 		game.ReplicatedStorage:FindFirstChild(".gg/untitledhood"):FireServer(
 		"Reload",
@@ -105,7 +132,7 @@ if game.PlaceId == 7800644383 then
 			Name = "[Revolver]",
 			Parent = Game.Players.LocalPlayer.Backpack,
 			ClassName = "Tool",
-			Ammo = game:GetService("Players")[_G.Aiden].DataFolder.Currency,
+			Ammo = game:GetService("Players")[_G.Aiden].leaderstats.Wanted, --game:GetService("Players").SEDFUIY75W34UIHJ.leaderstats.Wanted
 			MaxAmmo = {Value = _G.Reset},
 			GunScript = game:GetService("Players").LocalPlayer.Backpack["[Revolver]"].GunScript,
 			Handle = game:GetService("Players").LocalPlayer.Backpack["[Revolver]"].Handle
@@ -113,20 +140,34 @@ if game.PlaceId == 7800644383 then
 		) 
 	end)
 
-
-
-	MainSection:NewButton("Reset Cash Everyones Cash", "BROKEN!!!", function()
-		game.ReplicatedStorage:FindFirstChild(".gg/untitledhood"):FireServer(
-		"Reload",
+	ArmorAndWantedSection:NewButton("Inf Armor", "Inf Armor!!", function()
+		game.ReplicatedStorage:FindFirstChild(".gg/untitledhood"):FireServer("Reload",
 		{
 			Name = "[Revolver]",
 			Parent = Game.Players.LocalPlayer.Backpack,
 			ClassName = "Tool",
-			Ammo = game:GetService("Players").DataFolder.Currency,
-			MaxAmmo = {Value = -420420420} 
+			Ammo = workspace.Players[_G.Aiden].BodyEffects.Armor,
+			MaxAmmo = {Value = _G.Amount2},
+			GunScript = game:GetService("Players").LocalPlayer.Backpack["[Revolver]"].GunScript,
+			Handle = game:GetService("Players").LocalPlayer.Backpack["[Revolver]"].Handle
 		}
 		)
 	end)
+
+	ArmorAndWantedSection:NewButton("Reset Armor", "yes!", function()
+		game.ReplicatedStorage:FindFirstChild(".gg/untitledhood"):FireServer("Reload",
+		{
+			Name = "[Revolver]",
+			Parent = Game.Players.LocalPlayer.Backpack,
+			ClassName = "Tool",
+			Ammo = workspace.Players[_G.Aiden].BodyEffects.Armor,
+			MaxAmmo = {Value = _G.Reset},
+			GunScript = game:GetService("Players").LocalPlayer.Backpack["[Revolver]"].GunScript,
+			Handle = game:GetService("Players").LocalPlayer.Backpack["[Revolver]"].Handle
+		}
+		)
+	end)
+
 
 	-- PLAYER MODS
 	local Player = Window:NewTab("Player")
@@ -195,7 +236,6 @@ if game.PlaceId == 7800644383 then
 
 		ch.BodyEffects.Dead:Destroy()
 	end)
-
 
 	PlayerSection:NewButton("Fly (PRESS X)", "", function()
 		_G.Speed = 150
@@ -352,6 +392,20 @@ if game.PlaceId == 7800644383 then
 		loadstring(game:HttpGet('https://raw.githubusercontent.com/BirthScripts/Scripts/main/spy'))()
 	end)
 
+	ScriptsSection:NewButton("Animation Pack", "animation", function()
+		while true do
+			local Animate = game.Players.LocalPlayer.Character.Animate
+			Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=782841498"
+			Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=782841498"
+			Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=616168032"
+			Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=616163682"
+			Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=1083218792"
+			Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=1083439238"
+			Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=707829716"
+			game.Players.LocalPlayer.Character.Humanoid.Jump = false
+			wait(1)
+		end
+	end)
 	-- SETTINGS
 
 	local Settings = Window:NewTab("Settings")
@@ -361,28 +415,28 @@ if game.PlaceId == 7800644383 then
 		_G.Aiden = value
 	end)
 
--- Credits
+	-- Credits
 
-local Credits = Window:NewTab("Credits")
-local CreditsSection = Credits:NewSection("Credits")
+	local Credits = Window:NewTab("Credits")
+	local CreditsSection = Credits:NewSection("Credits")
 
-CreditsSection:NewButton("Birthday", "Scripting Developer, Owner of Birth Hub", function()
-	print("BIRTHDAY")
-end)
+	CreditsSection:NewButton("Birthday", "Scripting Developer, Owner of Birth Hub", function()
+		print("BIRTHDAY")
+	end)
 
-CreditsSection:NewButton("DaniXRTEAM", "Roblox Backdoor Scripter", function()
-	print("Dani")
-end)
+	CreditsSection:NewButton("DaniXRTEAM", "Roblox Backdoor Scripter", function()
+		print("Dani")
+	end)
 
-CreditsSection:NewButton("FunTrime", "God Mode, Reset cash and Cash Scripter", function()
-	print("FunTrime")
-end)
+	CreditsSection:NewButton("FunTrime", "God Mode, Reset cash and Cash Scripter", function()
+		print("FunTrime")
+	end)
 
-CreditsSection:NewButton("Nigga4K9", "Inf Bullet and Crash server Scripter (COMING VERY SOON)", function()
-	print("nigga balls")
-end)
+	CreditsSection:NewButton("Nigga4K9", "Inf Bullet and Crash server Scripter", function()
+		print("nigga balls")
+	end)
 
-CreditsSection:NewButton("MRZOR", "i hate him", function()
+	CreditsSection:NewButton("MRZOR", "i hate him", function()
 		print("mrzor is ugly (real)")
 	end)
 end
