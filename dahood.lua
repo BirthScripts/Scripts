@@ -1,6 +1,6 @@
 if game.PlaceId == 7800644383 then
 	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-	local Window = Library.CreateLib("Birthday Hood","Sentinel")
+	local Window = Library.CreateLib("Birthday Hood v1.1","Sentinel")
 
 	-- MAIN
 	local Cash = Window:NewTab("Cash")
