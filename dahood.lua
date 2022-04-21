@@ -1,11 +1,7 @@
 if game.PlaceId == 7800644383 then
 	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-	local Window = Library.CreateLib("Birthday Hood v1.1","Sentinel")
-
-	-- MAIN
-	local Cash = Window:NewTab("Cash")
-	local CashSection = Cash:NewSection("Cash")
-
+	local Window = Library.CreateLib("Birthday Hood v1.2","Sentinel")
+	-- Untitled Hood stuff
 	local Workspace = game:GetService("Workspace")
 	local Players = game.Players.LocalPlayer
 
@@ -57,6 +53,28 @@ if game.PlaceId == 7800644383 then
 	_G.Reset = 1
 
 	_G.Reset2 = -8999999999999999999
+	
+	local args = {
+		[1] = "Birthday Hood Executed. || .gg/kNxqGxkAUp",
+		[2] = "All"
+	}
+
+	game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(args))
+
+	-- MAIN
+	local Update = Window:NewTab("Updates")
+	local UpdateSection = Update:NewSection("Updates")
+	
+	UpdateSection:NewToggle("Update to Version 1.2?", "check console if toggled", function(state)
+		if state then
+			print("On")
+		else
+			print("Off")
+		end
+	end)
+-- Cash
+	local Cash = Window:NewTab("Cash")
+	local CashSection = Cash:NewSection("Cash")
 	-- Main
 
 
@@ -236,6 +254,13 @@ if game.PlaceId == 7800644383 then
 
 		ch.BodyEffects.Dead:Destroy()
 	end)
+	
+	PlayerSection:NewButton("Birthday Hood Spam!", "yess", function()
+		local args = {
+			[1] = "join birthday hub lol .gg/kNxqGxkAUp",
+			[2] = "All"
+		}
+	end)
 
 	PlayerSection:NewButton("Fly (PRESS X)", "", function()
 		_G.Speed = 150
@@ -374,6 +399,10 @@ if game.PlaceId == 7800644383 then
 
 		end
 	end)
+	
+	PlayerSection:NewButton("Inf Zoom", "op", function()
+		game.Players.LocalPlayer.CameraMaxZoomDistance = 2000
+	end)
 	-- Scripts
 
 	local Scripts = Window:NewTab("Scripts")
@@ -385,7 +414,7 @@ if game.PlaceId == 7800644383 then
 	end)
 
 	ScriptsSection:NewButton("Inf Yield", "", function()
-		loadstring(game:HttpGet('https://raw.githubusercontent.com/BirthScripts/Scripts/main/Inf%20Yield'))()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 	end)
 
 	ScriptsSection:NewButton("Spy Chat", "spy chat!!!", function()
@@ -406,7 +435,6 @@ if game.PlaceId == 7800644383 then
 			wait(1)
 		end
 	end)
-
 	
 	-- SETTINGS
 
@@ -440,9 +468,6 @@ if game.PlaceId == 7800644383 then
 
 	CreditsSection:NewButton("Nigga4K9", "Inf Bullet and Crash server Scripter", function()
 		print("nigga balls")
-	end)
 
-	CreditsSection:NewButton("MRZOR#2173", "i hate him", function()
-		print("mrzor is ugly (real)")
 	end)
 end
