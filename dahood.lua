@@ -260,6 +260,7 @@ if game.PlaceId == 7800644383 then
 			[1] = "join birthday hub lol .gg/kNxqGxkAUp",
 			[2] = "All"
 		}
+		game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(args))
 	end)
 
 	PlayerSection:NewButton("Fly (PRESS X)", "", function()
