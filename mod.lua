@@ -174,4 +174,3 @@ end
 
 local successful, errored = pcall(initiateNames)
 return MODS
-© 2022 GitHub, Inc.
